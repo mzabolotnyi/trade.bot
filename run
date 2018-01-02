@@ -1,0 +1,21 @@
+<?php
+
+use BotBundle\Bot;
+
+require __DIR__ . '/vendor/autoload.php';
+
+$opts = getopt('c:');
+$platform = isset($opts['c']) ? $opts['c'] : null;
+
+$configPath = 'config/' . $platform . '.php';
+
+if (!is_null($platform) && file_exists($configPath)) {
+    /** @var array $config */
+    include_once $configPath;
+} else {
+    throw new \Exception('Need to set platform (p)');
+}
+
+$client = \ApiBundle\ClientFactory::create($config);
+$bot = new Bot($client);
+$bot->run();

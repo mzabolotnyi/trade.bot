@@ -1,0 +1,7 @@
+<?php
+
+$config = [
+    'apiKey' => '~',
+    'apiSecret' => '~',
+    'tradingPlatform' => 'binance',
+];
