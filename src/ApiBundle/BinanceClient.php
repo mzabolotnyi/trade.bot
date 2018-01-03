@@ -2,9 +2,22 @@
 
 namespace ApiBundle;
 
-class BinanceClient extends AbstractClient
+class BinanceClient implements IClient
 {
-    public function buy()
+    private $apiClient;
+
+    public function __construct(BinanceApiClient $apiClient)
     {
+        $this->apiClient = $apiClient;
+    }
+
+    public function ping()
+    {
+        try {
+            $this->apiClient->ping();
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

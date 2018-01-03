@@ -12,7 +12,7 @@ class ClientFactory
 
         switch ($platform) {
             case 'binance':
-                $client = new BinanceClient($apiKey, $apiSecret);
+                $client = new BinanceClient(new BinanceApiClient($apiKey, $apiSecret));
                 break;
             default:
                 throw new \Exception('Api client for platform "' . $platform . '" not implement');

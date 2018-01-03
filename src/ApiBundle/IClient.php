@@ -4,5 +4,5 @@ namespace ApiBundle;
 
 interface IClient
 {
-    public function buy();
+    public function ping();
 }
